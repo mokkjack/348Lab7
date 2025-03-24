@@ -8,7 +8,7 @@ void scorefind(int maxscore){ //function to find the score
     int fg=3;
     int sft=2;
     int score;
-    //Nested for loop logic was assisted by ChatGPT to troubleshoot initial bugs, had the idea to initally use the nested for loops, but GPT helped with the logic to to the maxscore / by score
+    //Nested for loop logic was assisted by ChatGPT to troubleshoot initial bugs, had the idea to initally use the nested for loops, but GPT helped with the logic with the remainders
     for (int i = 0; i <= maxscore / ttd; i++) { // iterate i from 0 to the maximum possible 2 pt  + touchdowns
         for (int j = 0; j <= maxscore / tdfg; j++) { //iterate j from 0 to the maximum possible 1 point + touchdown
             for (int k = 0; k <= maxscore / td; k++) { //iterate k from 0 to the maximum possible touchdown
@@ -59,11 +59,15 @@ int main(){
     printf("Enter 0 or 1 to STOP\n"); //If user wants to stop, input those
     while (1) { //Until they enter 0/1
         printf("Enter the NFL score: "); //Prompt user to input
-        scanf("%d", &maximumscore); //score input
-        if (maximumscore <= 1) { //if less than equal to 1 (Impossible to print)
+        if (scanf("%d", &maximumscore) != 1) { // Check if input is not a number
+            printf("Invalid input.\n"); //Print error message
             break; //end loop
         }
-        scorefind(maximumscore); //run the function
+        if (maximumscore <=1){  //if the score is 1 or 0 (or a negative number)
+            printf("Score impossible, ending program."); //error out
+            break; //end loop
+        }
+        scorefind(maximumscore); //if all checks, run the function
     }
     return 0;
 }
