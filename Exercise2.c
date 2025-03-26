@@ -43,8 +43,8 @@ int main(){
     float temp; //Initalize temperature variable
     int scale; //initalize what scale we are inputting
     int convert; //Initalize which scale we are converting to
-    //Copilot used to help with troubleshooting, specifically clearing the buffer, adding the getchar to clear the buffer.
-
+    
+    //copilot used to help with clearing the buffer
     while(1){ //Choose temperature float value until user inputs a valid number
         printf("Enter the temperature: "); //Prompt user for temperature
         if (scanf("%f", &temp) == 1) { // Check if input is a number and not some other character
